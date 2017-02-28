@@ -1,0 +1,164 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TechTest-AppyClient",
+		"_postman_id": "d2357e18-4221-67c8-ed37-3a13fa30772f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Data Services",
+			"description": "",
+			"item": [
+				{
+					"name": "http://{{BaseUrl}}/GetShapes",
+					"request": {
+						"url": "http://{{BaseUrl}}/GetShapes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AccessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"CountryIds\": [\"{{CountryIds}}\"],\n\"RegionIds\": [\"{{RegionIds}}\"],\n\"AuthorityIds\": [\"{{AuthorityIds}}\"],\n\"ZoneIds\": [\"{{ZoneIds}}\"],\n\"OspIds\": [\"{{OspIds}}\"]\n}"
+						},
+						"description": "Get Shapes"
+					},
+					"response": []
+				},
+				{
+					"name": "http://{{BaseUrl}}/parkingRestrictions?location=51.555530,-0.101625&ospRestrictionTypes=3,5,6,7,9&time=2016-12-04T11:22:39&viewport=51.555306,-0.101942,51.556007,-0.101308&endTime=2017-12-04T11:22:39",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"var countryIds = [jsonData.countries[0].countryId];",
+									"var regionIds = [jsonData.regions[0].regionId];",
+									"var authorityIds = [jsonData.authorities[0].authorityId];",
+									"var zoneIds = [jsonData.zones[0].zoneId];",
+									"var ospIds = [jsonData.osps[0].ospId];",
+									"",
+									"postman.setEnvironmentVariable(\"CountryIds\", countryIds);",
+									"postman.setEnvironmentVariable(\"RegionIds\", regionIds);",
+									"postman.setEnvironmentVariable(\"AuthorityIds\", authorityIds);",
+									"postman.setEnvironmentVariable(\"ZoneIds\", zoneIds);",
+									"postman.setEnvironmentVariable(\"OspIds\", ospIds);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{BaseUrl}}/parkingRestrictions?location=51.555530,-0.101625&ospRestrictionTypes=3,5,6,7,9&time=2016-12-04T11:22:39&viewport=51.555306,-0.101942,51.556007,-0.101308&endTime=2017-12-04T11:22:39",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AccessToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Get Parking Restrictions\n - Returns the id's of the entities within the viewport for the given duration"
+					},
+					"response": []
+				},
+				{
+					"name": "http://{{BaseUrl}}/GetEntities",
+					"request": {
+						"url": "http://{{BaseUrl}}/GetEntities",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{AccessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"CountryIds\": [\"{{CountryIds}}\"],\n\"RegionIds\": [\"{{RegionIds}}\"],\n\"AuthorityIds\": [\"{{AuthorityIds}}\"],\n\"ZoneIds\": [\"{{ZoneIds}}\"],\n\"OspIds\": [\"{{OspIds}}\"]\n}"
+						},
+						"description": "Get Entities"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OAuth",
+			"description": "",
+			"item": [
+				{
+					"name": "http://{BaseUrl}/token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"AccessToken\", \"Bearer \" + jsonData.access_token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{BaseUrl}}/token",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "testuser@appyparking.com",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "OAuth Token Endpoint"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
