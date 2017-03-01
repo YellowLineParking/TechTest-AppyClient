@@ -36,8 +36,8 @@ If you are an Android developer
    
  
 # How to submit your code
- 
-  - fork this git repository
-  - write your code in the forked repository
+  - download the contents of this git repository
+  - write your code in your own repository
   - add a readme explaining what you have done, the decisions you made, how long you spent and what you would improve given more time.
+  - upon completion, zip the git repository up and send it back to us
  
