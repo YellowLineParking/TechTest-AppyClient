@@ -1,12 +1,12 @@
-# Mobile Developer Test
+# Mobile / Front End Developer Test
 
-In this test, we would like you to bulid a mobile application to display our parking data.
+In this test, we would like you to bulid a mobile/web application to display our parking data.
 
 We have provided a set of [user stories](/UserStories.md) to help guide you on the requirements. We recommend that you work through them in order.
 
 You may use your own creative judgement to design the application. We have provided some [assets](/Assets) for you to use as you wish.
 
-We do not expect you to build any registration flow. In order to create an account, you should download our AppyParking app, and sign up with a username and password.
+We do not expect you to build any registration flow. In order to create an account, you should download our AppyParking app, and sign up with a username and password or use the AppyParking web app.
 
 # Technical Requirements
 
@@ -25,6 +25,11 @@ If you are an iOS developer
 If you are an Android developer
  - The app should run in the latest version of Android
  - The code should be written in Java and compile in Android Studio or use react native
+ 
+##Web
+If you are a front-end web developer
+ - The app should run in the chrome browser
+ - The code should be written in JavaScript, HTML5, css. You may use your preferred javascript framework.
  
 # What we will look for
   - Well structured, clean code
