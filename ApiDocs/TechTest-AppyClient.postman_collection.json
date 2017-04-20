@@ -62,7 +62,7 @@
 						}
 					],
 					"request": {
-						"url": "http://{{BaseUrl}}/parkingRestrictions?location=51.555530,-0.101625&ospRestrictionTypes=3,5,6,7,9&time=2016-12-04T11:22:39&viewport=51.555306,-0.101942,51.556007,-0.101308&endTime=2017-12-04T11:22:39",
+						"url": "http://{{BaseUrl}}/parkingRestrictions?location=51.555530,-0.101625&ospRestrictionTypes=3,5,6,7,9&time=2016-12-04T11:22:39&viewport=51.555306,-0.101942,51.556007,-0.101308&endTime=2017-12-04T11:22:39&zomax=100",
 						"method": "GET",
 						"header": [
 							{
